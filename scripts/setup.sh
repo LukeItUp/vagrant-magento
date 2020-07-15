@@ -50,7 +50,8 @@ composer install
 echo $SEPARATOR ' Finishing up ' $SEPARATOR
 chown -R www-data:www-data /var/www/html/magento2/
 cd /var/www/html/magento2
-sudo -u www-data php bin/magento cron:install
+#sudo -u www-data php bin/magento cron:install
+sudo -u www-data crontab /vagrant/crontab-file
 
 cp /vagrant/magento-nginx.conf /etc/nginx/sites-enabled/magento.conf
 service nginx restart
