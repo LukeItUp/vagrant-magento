@@ -1,0 +1,16 @@
+# Magento server
+upstream magento_vm_node {
+   server 127.0.0.1:8080;
+}
+
+server {
+	listen 8082;
+	server_name magento.aikwit.si;
+	#listen [::]:80;
+	
+	location / {
+	   proxy_pass http://magento_vm_node;
+	   proxy_set_header HOST magento.aikwit.si;
+	}
+}
+
